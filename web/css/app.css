@@ -1,0 +1,53 @@
+.app-cont {
+    width: 700px;
+    margin: auto;
+}
+
+.header-cont {
+    text-align: center;
+}
+
+.header-cont a {
+    margin: 0 5px;
+}
+
+.structure-level-clinic {
+    margin-left: 50px;
+}
+
+.structure-level-deprtment {
+    margin-left: 100px;
+}
+
+.structure-level-cabinet {
+    margin-left: 150px;
+}
+
+.structure-item {
+    padding: 5px;
+    border: 1px solid #000;
+    margin-bottom: 5px;
+    position: relative;
+}
+
+.structure-item.current-item {
+    border: 1px solid blue;
+}
+
+.hospital-items .hospital-item {
+    padding: 5px;
+    border: 1px solid #000;
+    margin-bottom: 5px;
+    position: relative;
+}
+
+.structure-item .btns-cont,
+.hospital-item .btns-cont {
+    position: absolute;
+    right: 0px;
+    top: 0px;
+}
+
+.text-info-cont {
+    text-align: center;
+}

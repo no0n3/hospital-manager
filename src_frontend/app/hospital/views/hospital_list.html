@@ -1,0 +1,17 @@
+<div data-ng-include="headerUrl"></div>
+<h3>{{ canManage ? 'Manage hospitals' : 'All hospitals'}}</h3>
+
+<div data-ng-if="true === loading" class="text-info-cont">
+    Loading ...
+</div>
+<div data-ng-if="false === loading" class="hospital-items">
+    <div class="hospital-item" data-ng-repeat="hospital in hospitals" data-ng-show="!hospital.is_deleted">
+        <a data-ng-href="{{ siteDomain + 'hospital/view/' + hospital.id }}">{{ hospital.name }}</a>
+
+        <div class="btns-cont" data-ng-if="canManage">
+            <button data-ng-if="loggedUser && loggedUser.id == hospital.user_id" data-ng-click="deleteHospital({id: hospital.id})">delete</button>
+            <button data-ng-if="loggedUser && loggedUser.id == hospital.user_id" data-ng-click="goToEditHospital({id: hospital.id})">edit</button>
+        </div>
+    </div>
+    <div data-ng-if="null !== hospitals && 0 === hospitals.length">No available hospitals</div>
+</div>

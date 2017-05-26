@@ -1,0 +1,8 @@
+<div class="header-cont">
+    <a data-ng-href="{{ siteDomain }}">all hospitals</a>
+    <a data-ng-if="loggedUser" data-ng-href="{{ siteDomain + 'hospital/add' }}">create hospital</a>
+    <a data-ng-if="loggedUser" data-ng-href="{{ siteDomain + 'hospitals/manage' }}">mangage hospitals</a>
+    <a data-ng-if="loggedUser" href="#" data-ng-click="logout()">logout</a>
+    <a data-ng-if="!loggedUser" data-ng-href="{{ siteDomain + 'login' }}">login</a>
+    <a data-ng-if="!loggedUser" data-ng-href="{{ siteDomain + 'sign-up' }}">signup</a>
+</div>

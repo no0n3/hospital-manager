@@ -1,0 +1,32 @@
+<div data-ng-include="headerUrl"></div>
+<div data-ng-if="true === loading" class="text-info-cont">
+    Loading ...
+</div>
+<div data-ng-if="false === loading">
+    <div data-ng-if="hospital">
+        <h3>Hospital details</h3>
+        <div>Name: {{ hospital.name }}</div>
+        <div>Description: {{ hospital.description }}</div>
+    </div>
+    <div>
+        <h3>Hospital structure</h3>
+        <div class="structure-item current-item">
+            <a data-ng-href="{{ siteDomain + 'hospital/view/' + hospital.structure.hospital.id }}">{{ hospital.structure.hospital.name }}</a> <span>- hospital</span>
+        </div>
+        <div class="structure-level-clinic" data-ng-repeat="clinic in hospital.structure.hospital.clinics">
+            <div class="structure-item">
+                <a data-ng-href="{{ siteDomain + 'hospital-branch/' + clinic.type + '/' + clinic.id }}">{{ clinic.name }}</a> <span data-ng-if="clinic.type">- {{clinic.type}}</span>
+            </div>
+            <div class="structure-level-deprtment" data-ng-repeat="department in clinic.departments">
+                <div class="structure-item">
+                    <a data-ng-href="{{ siteDomain + 'hospital-branch/' + department.type + '/' + department.id }}">{{ department.name }}</a> <span data-ng-if="department.type">- {{department.type}}</span>
+                </div>
+                <div class="structure-level-cabinet" data-ng-repeat="cabinet in department.cabinets">
+                    <div class="structure-item">
+                        <a data-ng-href="{{ siteDomain + 'hospital-branch/' + cabinet.type + '/' + cabinet.id }}">{{ cabinet.name }}</a> <span data-ng-if="cabinet.type">- {{cabinet.type}}</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

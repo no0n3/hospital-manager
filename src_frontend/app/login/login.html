@@ -1,0 +1,13 @@
+<div data-ng-include="headerUrl"></div>
+<h3>Login</h3>
+<form name="form" novalidate class="simple-form">
+    <div>
+        <label>E-mail: <input type="text" name="email" ng-model="user.email" ng-disabled="loading" required/></label>
+    </div>
+    <div>
+        <label>Password: <input type="password" name="password" ng-model="user.password" ng-disabled="loading" required/></label>
+    </div>
+
+    <input type="submit" ng-disabled="loading" ng-click="login(form)" value="Login" />
+    <button ng-disabled="loading" ng-click="goToSignup()">sign up</button>
+</form>

@@ -1,0 +1,60 @@
+<div data-ng-include="headerUrl"></div>
+<div data-ng-if="true === edited">
+    <div class="text-info-cont">Hospital successlly edited</div>
+</div>
+<div data-ng-if="false === edited && false === gettingData && hospital">
+    <h3>Edit hospital</h3>
+    <form name="form" novalidate class="simple-form">
+        <div>
+            <label>Name: <input type="text" name="name" ng-model="hospital.name" ng-disabled="loading" required/></label>
+        </div>
+        <div>
+            <label>Alt Name: <input type="text" name="alt_name" ng-model="hospital.alt_name" ng-disabled="loading" required/></label>
+        </div>
+        <div>
+            <label>Description: <input type="text" name="description" ng-model="hospital.description" ng-disabled="loading" required/></label>
+        </div>
+
+        <button ng-disabled="loading" ng-click="update(form)">update</button>
+    </form>
+    <h3>Structure</h3>
+    <div>
+        <div>
+            <button data-ng-if="loggedUser" data-ng-click="addItem({id: hospital.id, type: 'hospital'})">add clinic</button>
+        </div>
+        <div class="structure-level-clinic" data-ng-repeat="clinic in hospital.structure.hospital.clinics" data-ng-show="!clinic.is_deleted">
+            <div class="structure-item">
+                {{ clinic.name }} <span data-ng-if="clinic.type">- {{clinic.type}}</span>
+                <div class="btns-cont">
+                    <button data-ng-if="loggedUser && loggedUser.id == clinic.user_id" data-ng-click="addItem({id: clinic.id, type: clinic.type})">add item</button>
+                    <button data-ng-if="loggedUser && loggedUser.id == clinic.user_id" data-ng-click="deleteItem({id: clinic.id, type: clinic.type})">delete</button>
+                    <button data-ng-if="loggedUser && loggedUser.id == clinic.user_id" data-ng-click="editItem({id: clinic.id, type: clinic.type})">edit</button>
+                </div>
+            </div>
+            <div class="structure-level-deprtment" data-ng-repeat="department in clinic.departments">
+                <div class="structure-item" data-ng-if="!department.is_deleted">
+                    {{ department.name }} <span data-ng-if="department.type">- {{department.type}}</span>
+                    <div class="btns-cont">
+                        <button data-ng-if="loggedUser && loggedUser.id == department.user_id" data-ng-click="addItem({id: department.id, type: department.type})">add item</button>
+                        <button data-ng-if="loggedUser && loggedUser.id == department.user_id" data-ng-click="deleteItem({id: department.id, type: department.type})">delete</button>
+                        <button data-ng-if="loggedUser && loggedUser.id == department.user_id" data-ng-click="editItem({id: department.id, type: department.type})">edit</button>
+                    </div>
+                </div>
+                <div class="structure-level-cabinet" data-ng-if="!cabinet.is_deleted" data-ng-repeat="cabinet in department.cabinets">
+                    <div class="structure-item">
+                        {{ cabinet.name }} <span data-ng-if="cabinet.type">- {{cabinet.type}}</span>
+                        <div class="btns-cont">
+                            <button data-ng-if="loggedUser && loggedUser.id == cabinet.user_id" data-ng-click="deleteItem({id: cabinet.id, type: cabinet.type})">delete</button>
+                            <button data-ng-if="loggedUser && loggedUser.id == cabinet.user_id" data-ng-click="editItem({id: cabinet.id, type: cabinet.type})">edit</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+</div>
+<div data-ng-if="true === gettingData">
+    Loading...
+</div>
+<div data-ng-if="false === gettingData && null == hospital">
+    No valid item found
+</div>

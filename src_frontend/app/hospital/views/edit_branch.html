@@ -1,0 +1,21 @@
+<div data-ng-include="headerUrl"></div>
+<div data-ng-if="true === added">
+    <div class="text-info-cont">{{ type }} successlly {{ create ? 'added' : 'edited' }}</div>
+</div>
+<div data-ng-if="false === added && validType">
+    <h3>{{ create ? 'Create' : 'Edit' }} hospital {{ type }}</h3>
+    <form name="form" novalidate class="simple-form">
+        <div>
+            <label>Name: <input type="text" name="name" ng-model="hospital.name" ng-disabled="loading" required/></label>
+        </div>
+        <div>
+            <label>Alt Name: <input type="text" name="alt_name" ng-model="hospital.alt_name" ng-disabled="loading" required/></label>
+        </div>
+        <div>
+            <label>Description: <input type="text" name="description" ng-model="hospital.description" ng-disabled="loading" required/></label>
+        </div>
+
+        <button ng-disabled="loading" ng-click="update(form)">create</button>
+    </form>
+</div>
+<div data-ng-if="false === validType">Not valid hospital structure type</div>
