@@ -6,12 +6,14 @@ Single page application using AngularJS communication with the backend via REST 
 Project structure
 -------------
 
+```
 src             - backend code location
 src_frontend    - fronted code location
 config          - backend configuration
 web             - public folder
     index.php   - backend front controller
     index.html  - frontend front controller
+```
 
 Set up project
 -------------
@@ -21,4 +23,4 @@ Set up project
 * Run 'npm install'
 * Run 'bower install'
 * Run 'gulp build'
-* Run the following console command in the project main directory to set up the database: php init.php to setup the database schema
+* Run the following console command in the project main directory to set up the database schema: php init.php
