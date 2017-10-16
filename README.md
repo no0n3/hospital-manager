@@ -1,6 +1,7 @@
 Project description
 -------------
 
+Simple hospital, clinic, department CRUD app.
 Single page application using AngularJS communication with the backend via REST service.
 
 Project structure
