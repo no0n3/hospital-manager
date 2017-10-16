@@ -34,8 +34,7 @@ class MainController extends Controller {
     public function login() {
         $email    = $this->getPostParam('email');
         $password = $this->getPostParam('password');
-//$email = 'edasx@mail.com';
-//$password = 'a';
+
         $success = $this->authService->login($email, $password);
 
         return [
